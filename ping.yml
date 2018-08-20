@@ -1,5 +1,14 @@
 ---
-- name: ping
-  hosts: all
+- name: ping test
+  hosts: router
+  connection: local
+  gather_facts: no
+
+#ping routers
   tasks:
-    command: {{ inventory }}
+   - name: ping all virtual devices 
+     ios_command:
+      commands: 
+      - ping 192.168.100.10
+     register: router_result
+   - debug: var=router_result.stdout_lines[0]
