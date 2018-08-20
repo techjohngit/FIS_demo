@@ -1,0 +1,6 @@
+---
+- name: sample
+  hosts: all
+  
+  roles:
+  - create-user
